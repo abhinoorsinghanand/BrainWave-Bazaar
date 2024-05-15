@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./calendar-08/calendar-08/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>About BrainWave Bazaar</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--        <link rel="stylesheet" href="./AboutUs.css">-->
+    <style>
+        @font-face {
+            font-family: 'Chalk';
+            src: url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff2) format('woff2'),
+                url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff) format('woff'),
+                url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.ttf) format('ttf');
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        /* UNCOMMENT IF USING OLD NAVBAR */
+        /* .navbar-brand{
+    font-family: 'Chalk', sans-serif;
+    font-weight: 600;
+}
+.nav-item{
+    list-style: none;
+} */
+        * {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colors */
+            --body-color: #E4E9F7;
+            --sidebar-color: #FFF;
+            --primary-color: #695CFE;
+            --primary-color-light: #F6F5FF;
+            --toggle-color: #DDD;
+            --text-color: black;
+            /* --body-color: #F8EECB;
+    --sidebar-color: #F5C065;
+    --primary-color: #6E433D;
+    --primary-color-light: #F8EECB;
+    --toggle-color: #DDD;
+    --text-color: #6E433D; */
+
+            /* Transitions */
+            --tran-02: all 0.2s ease;
+            --tran-03: all 0.3s ease;
+            --tran-04: all 0.4s ease;
+            --tran-05: all 0.5s ease;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--body-color);
+        }
+
+
+
+        /* ======== SIDEBAR ======== */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            padding: 10px 14px;
+            background: var(--sidebar-color);
+        }
+
+        /* ======== REUSABLE CSS ======== */
+        .sidebar .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .sidebar .image {
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar li {
+            height: 50px;
+            margin-top: 10px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar li .icon {
+            font-size: 20px;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar li .icon,
+        .sidebar li .text {
+            color: var(--text-color);
+            transition: var(--tran-02);
+        }
+
+        .sidebar header {
+            position: relative;
+        }
+
+        .sidebar .image-text img {
+            width: 40px;
+            border-radius: 6px;
+
+        }
+
+        .sidebar header .image-text {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar header .image-text .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-text .name {
+            font-weight: 600;
+        }
+
+        .name {
+            font-family: 'Chalk', "Poppins", sans-serif;
+        }
+
+        .header-text .profession {
+            margin-top: -2px;
+        }
+
+        /* .sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--sidebar-color);
+    font-size: 22px;
+} */
+
+        .sidebar .search-box {
+            background: var(--primary-color-light);
+        }
+
+        .search-box input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            background: var(--primary-color-light);
+        }
+
+        .sidebar li a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: var(--tran-04);
+
+
+        }
+
+        .sidebar li a:hover {
+            background: var(--primary-color);
+        }
+
+
+        .sidebar li a:hover .icon,
+        .sidebar li a:hover .text {
+            color: var(--sidebar-color);
+        }
+
+        .sidebar .menu-bar {
+            height: calc(100% - 50px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+
+        .menu-bar .mode {
+            background: var(--primary-color-light);
+
+        }
+
+        .menu-bar .mode i {
+            position: absolute;
+        }
+
+        /*========== About Us ==========*/
+        form {
+            padding: 67px 100px 78px 350px;
+            /* 250px for sidebar and 100 for consistent padding */
+
+        }
+
+        form label {
+            color: var(--text-color) !important;
+            font-weight: 600;
+
+        }
+
+        .content_para {
+            text-align: justify;
+        }
+
+        /*========== Table ==========*/
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: var(--sidebar-color);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        ul li {
+            text-align: left;
+        }
+
+        footer{
+            text-align: center;
+            color: var(--primary-color);
+            padding-left: 250px;
+        }
+    </style>
+
+    <!-- Box Icon CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <!-- <img src="logo.png" alt="logo"> -->
+                    </span>
+
+                    <div class="text header-text">
+                        <span class="name">BrainWave Bazaar</span>
+                        <!--<span class="profession">&nbsp;</span>-->
+                    </div>
+                </div>
+
+                <!-- <i class='bx bx-chevron-right toggle'></i> -->
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <!-- <li class="search-box">
+                        <i class='bx bx-search-alt icon'></i>
+                        <input type="search" placeholder="Search...">
+                    </li> -->
+                    <ul class="menu-links" style="padding: 0rem;">
+                        <li class="nav-link">
+                            <a href="./dashboard.jsp">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="./UploadNotes.jsp">
+                                <i class='bx bx-upload icon'></i>
+                                <span class="text nav-text">Upload Notes</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="./">
+                                <i class='bx bx-book-reader icon'></i>
+                                <span class="text nav-text">Read Notes</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-category-alt icon'></i>
+                                <span class="text nav-text">My Notes</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="./Profile.jsp">
+                                <i class='bx bxs-face icon'></i>
+                                <span class="text nav-text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="./AboutUs.html">
+                                <i class='bx bx-group icon'></i>
+                                <span class="text nav-text">About Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="./">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- ------------------------------------------------------------ -->
+
+        <div class="form-container">
+            <form>
+                <h1 style="margin-bottom: 4.7%;">About BrainWave Bazaar</h1>
+                <label for="" class="form-label">Created by: Abhinoor Singh Anand</label>
+                <br>
+                <p class="content_para">People from all areas of life rely extensively on note-taking in today's
+                    fast-paced digital environment for a variety of reasons, such as job, education, and personal
+                    organisation. But whether taking notes digitally or on paper, the conventional approaches frequently
+                    prove inadequate to satisfy the changing demands and obstacles faced by contemporary users. With the
+                    use of cutting-edge digital technologies, BrainWave Bazaar- the E-Notes Collection and Organisation
+                    System presents
+                    itself as a comprehensive solution to completely transform the note-taking process and provide users
+                    never-before-seen levels of accessibility, convenience, and customisation.</p>
+                <label for="" class="form-label">Technologies Used</label>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Detail</th>
+                    </tr>
+                    <tr>
+                        <td>Programming Languages<br>and<br>Frameworks</td>
+                        <td>
+                            <strong>Front End</strong><br>
+                            <ul>
+                                <li>HTML or JSP</li>
+                                <li>CSS</li>
+                                <li>Javascript</li>
+                                <li>Bootstrap</li>
+                            </ul>
+                            <strong>Back End</strong><br>
+                            <ul>
+                                <li>Java (JDK 21 LTS)</li>
+                            </ul>
+                            <strong>Frameworks</strong><br>
+                            <ul>
+                                <li>Struts (Recommended)</li>
+                                <li>or Model View Controller (MVC)</li>
+                            </ul>
+                            <strong>Additions</strong><br>
+                            <ul>
+                                <li>CK Editor</li>
+                                <li>Box Icon CSS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Database Management System</td>
+                        <td>MySQL</td>
+                    </tr>
+                    <tr>
+                        <td>Web Server</td>
+                        <td>
+                            <ul>
+                                <li>Apache Tomcat 9.0 (Recommended)</li>
+                                <li>or GlassFish Server (latest)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td>Windows 7 or newer, Ubuntu Linux, Mac OS Xv10.7 or higher</td>
+                    </tr>
+                    <tr>
+                        <td>Integrated Development Environment (IDE)</td>
+                        <td>Apache NetBeans IDE 12.5 (Recommended)</td>
+                    </tr>
+                </table>
+                <br><br><br><label for="" class="form-label"><a href="#" target="_blank">Click here</a> to open the project synopsis.</label>
+            </form>
+            
+        </div>
+
+        <footer>
+            <p>Created by: Abhinoor Singh Anand | Purpose: Final Year Project | Roll Number: 17032000304</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

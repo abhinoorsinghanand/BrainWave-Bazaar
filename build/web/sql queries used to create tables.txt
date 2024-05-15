@@ -1,0 +1,155 @@
+create database notes_organization_system;
+
+use notes_organization_system;
+
+CREATE TABLE Users ( user_id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+CREATE TABLE Categories ( category_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, name VARCHAR(255) NOT NULL, FOREIGN KEY (user_id) REFERENCES Users(user_id) );
+
+create table tags ( tag_id int auto_increment primary key, user_id int, name varchar(255) not null, foreign key (user_id) references users(user_id) );
+
+create table Notes (note_id int auto_increment primary key, user_id int, title varchar(255) not null, content text, created_at timestamp default current_timestamp, updated_at timestamp default current_timestamp on update current_timestamp, category_id int, tag_id int, foreign key (user_id) references users(user_id), foreign key (category_id) references categories(category_id), foreign key (tag_id) references tags(tag_id) );
+
+
+
+
+
+
+
+
+
+
+
+To add dummy values into categories table
+insert into categories (category_id, user_id, name)
+    -> values(
+    -> 01, (select user_id from users where username = 'admin'), 'Java'),
+    -> (02, (select user_id from users where username = 'admin'), 'Machine Learning');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I wanted to remove the table named tags. But other table (notes) had a foreign key that referred to the primary key in tags table. So, I first removed that foreign key.
+
+mysql> SELECT CONSTRAINT_NAME
+    -> FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+    -> WHERE TABLE_NAME = 'notes'
+    -> AND COLUMN_NAME = 'tag_id';
++-----------------+
+| CONSTRAINT_NAME |
++-----------------+
+| notes_ibfk_3    |
++-----------------+
+
+mysql> ALTER TABLE notes
+    -> DROP FOREIGN KEY notes_ibfk_3;
+
+mysql> ALTER TABLE notes
+    -> DROP COLUMN tag_id;
+
+mysql> drop table tags;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I wanted to remove category_id and enter the id inside the name as well
+mysql> SELECT name, COUNT(*)
+    -> FROM categories
+    -> GROUP BY name
+    -> HAVING COUNT(*) > 1 OR name = '';
+Empty set (0.00 sec)
+
+mysql> ALTER TABLE categories
+    -> ADD COLUMN category_name varchar(255) NOT NULL;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE categories
+    -> SET category_name = name;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> alter table categories
+    -> add primary key (category_name);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe categories;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | int          | YES  | MUL | NULL    |       |
+| name          | varchar(255) | NO   |     | NULL    |       |
+| category_name | varchar(255) | NO   | PRI | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table categories
+    -> drop column name;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe categories;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | int          | YES  | MUL | NULL    |       |
+| category_name | varchar(255) | NO   | PRI | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//I wanted to change the datatype of content in notes table to longblob to store the images and pdf files
+mysql> alter table notes
+    -> modify column content longblob;
+
+
+
+
+
+
+
+
+
+
+//

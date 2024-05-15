@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Chalk';
+    src: url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff2) format('woff2'),
+        url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff) format('woff'),
+        url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.ttf) format('ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Chalk';
+}
+
+.container {
+    height: 100vh;
+    /* Adjusted height to cover the entire viewport */
+    width: 100%;
+    display: flex;
+    /* Added to make children elements in a row */
+    flex-direction: column;
+    /* Added to stack children vertically */
+}
+
+.nav,
+.b,
+.c,
+.d,
+.e,
+.f {
+    flex: 1;
+    /* Distribute remaining space evenly among children */
+    background-color: #623200;
+    border: 10px solid #7b4600;
+    box-sizing: border-box;
+    /* Ensure borders are included in the width */
+    overflow: hidden;
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+}
+
+.b {
+    background-image: url(./Assets/Images/index/books.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.home,
+.read,
+.dashboard,
+.contact,
+.login {
+    height: 100%;
+    /*border: 2px solid black;*/
+    background-image: url(./Assets/Images/index/board2.svg);
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.nav a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+/* SHELF THREE */
+.c {
+    display: flex;
+    height: 100%;
+}
+
+.div301,
+.div303 {
+    width: 30%;
+    /* border: 2px solid black; */
+}
+
+.div302 {
+    width: 40%;
+    /* border: 2px solid black; */
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-image: url(./Assets/Images/index/board_enlarged.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 105% auto;
+}
+
+.div302 h1 {
+    font-size: 53px;
+    font-weight: 100;
+    text-shadow: 5px 2px #D58A94;
+}
+
+.div301 {
+    background-image: url(./Assets/Images/index/div301.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.div303 {
+    background-image: url(./Assets/Images/index/div303.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+/* SHELF FOUR */
+.d {
+    display: flex;
+}
+
+.div401,
+.div403 {
+    /* border: 2px solid black; */
+    width: 33%;
+}
+.div401{
+    background-image: url(./Assets/Images/index/div401.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.div403{
+    background-image: url(./Assets/Images/index/div403.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.div402 {
+    width: 36%;
+    /* border: 2px solid black; */
+    background-image: url(./Assets/Images/index/board_enlarged.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 105% auto;
+
+}
+
+.div402 h5 {
+    color: whitesmoke;
+    font-weight: 100;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-top: 36px;
+}
+
+/* SHELF FIVE */
+.e{
+    display: flex;
+}
+.div501, .div505{
+    width: 30%;
+    /* border: 2px solid black; */
+
+}
+.div501{
+    background-image: url(./Assets/Images/index/div501.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.div502, .div504{
+    width: 15%;
+    /* border: 2px solid black; */
+    background-image: url(./Assets/Images/index/board2.svg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 120% auto;
+
+}
+.e a{
+    color: whitesmoke;
+    text-decoration: none;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    /* margin-left: 58px; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 30px;
+    font-size:25px;
+    
+}
+.div503{
+    width: 10%;
+    /* border: 2px solid black; */
+    background-image: url(./Assets/Images/index/div503.svg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+.div505{
+    background-image: url(./Assets/Images/index/div505.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+/* SHELF SIX */
+.f{
+    background-image: url(./Assets/Images/index/shelf6.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

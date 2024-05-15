@@ -1,0 +1,86 @@
+@font-face{
+    font-family: 'Chalk';
+    src: url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff2) format('woff2'),
+        url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.woff) format('woff'),
+        url(./Assets/Fonts/Fredeicka/FrederickatheGreat-Regular.ttf) format('ttf');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #623200;
+    font-family: 'Chalk', sans-serif;
+    background-image: url(./Assets/Images/Login/falling\ books.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+form{
+    width: 30%;
+    background-color: #181818;
+    padding: 50px;
+    border-radius: 2px;
+    margin-top: 18px;
+    /* color: white; */
+    border-top: 20px solid #bc9164;
+    border-left: 20px solid #a77f53;
+    border-bottom: 20px solid #bc9164;
+    border-right: 20px solid #a77f53;
+}
+.btn-primary{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background: none;
+    border: 2px dashed transparent;
+}
+.btn:hover{
+    border: 2px dashed white;
+    background-color: transparent;
+}
+.form-control{
+    color: white;
+    border-bottom-color: rgba(0, 0, 0, .42);
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+    background-color: #181818;
+    
+}
+.form-control:focus{
+    background-color: #181818;
+    color: white;
+}
+h4{
+    font-size: 2.4rem !important;
+    /* font-weight: 700; */
+    color: white;
+    text-shadow: 5px 2px #D58A94;
+}
+.form-label{
+    /* font-weight: 700 !important; */
+    color: white;
+    font-size: 1.2rem;
+}
+.form-text{
+    color: white;
+}
+hr{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+
+@media only screen and (max-width:600px){
+    form{
+        width: 100% !important;
+    }
+    body{
+        background-size:200%;
+    }
+}
